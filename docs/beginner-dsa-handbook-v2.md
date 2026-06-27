@@ -1,100 +1,122 @@
-# Beginner Data Structures & Algorithms Handbook (Version 2)
+# Beginner Data Structures & Algorithms Handbook (Version 3)
 
-A highly detailed beginner-friendly guide to complete Data Structures and Algorithms using Java.
+A complete **beginner-level** and **interview-focused** handbook for Data Structures and Algorithms in Java.
 
-This handbook covers each concept in the format:
-1. Definition
-2. Use of the concept
-3. When & why it is used
-4. Syntax and logic
-5. Basic Java code with detailed explanation
-6. Small hands-on practice task
+This version includes, for every concept:
+1. Definition  
+2. Use  
+3. When & why it is used  
+4. Syntax and logic  
+5. Time and Space Complexity (best case and worst case + why)  
+6. Basic Java example with detailed explanation  
+7. Small hands-on task  
 
-It also includes:
-- Detailed differences between major data structures
-- Interview questions and answers asked in product companies (Google, Amazon, etc.)
+Also included:
+- Detailed explanation of Time Complexity and Space Complexity
+- Detailed differences between data structures
+- Interview questions with answers asked in Google, Amazon, and other product companies
 
 ---
 
 ## Table of Contents
-1. Introduction to DSA
-2. Time and Space Complexity
-3. Arrays
-4. Strings
-5. Linked Lists
-6. Stacks
-7. Queues
-8. Hashing (HashMap/HashSet)
-9. Trees
-10. Binary Search Trees
-11. Heaps and Priority Queues
-12. Trie
-13. Graphs
-14. Sorting Algorithms
-15. Searching Algorithms
-16. Recursion
-17. Dynamic Programming (Beginner)
-18. Greedy Algorithms
-19. Backtracking
-20. Sliding Window and Two Pointers
-21. Detailed Differences Between Data Structures
-22. Interview Questions with Answers
+
+1. Introduction to DSA  
+2. Time Complexity and Space Complexity (Detailed)  
+3. Arrays  
+4. Strings  
+5. Linked Lists  
+6. Stack  
+7. Queue  
+8. Hashing (HashMap / HashSet)  
+9. Trees  
+10. Binary Search Tree (BST)  
+11. Heap / Priority Queue  
+12. Trie  
+13. Graphs  
+14. Sorting Algorithms  
+15. Searching Algorithms  
+16. Recursion  
+17. Dynamic Programming (DP)  
+18. Greedy Algorithms  
+19. Backtracking  
+20. Sliding Window and Two Pointers  
+21. Detailed Differences Between Data Structures  
+22. Interview Questions with Answers  
+23. Beginner Practice Roadmap  
 
 ---
 
 ## 1) Introduction to DSA
 
 ### Definition
-Data Structures are ways to organize and store data. Algorithms are step-by-step procedures to solve problems.
+- **Data Structure**: A way to store and organize data efficiently.
+- **Algorithm**: A step-by-step procedure to solve a problem.
 
 ### Use
-- To store data efficiently
-- To perform operations quickly
-- To solve coding problems logically
+- Improves performance of code.
+- Helps solve real-world and interview problems systematically.
 
 ### When & Why Used
-Used in almost every software system, from search engines to mobile apps. Choosing the right structure improves performance.
+- Used in almost every software system (apps, websites, search engines, payment systems).
+- Right choice of data structure + algorithm = faster and scalable systems.
 
 ### Syntax and Logic
-No direct syntax; this is foundational knowledge.
+No direct syntax. DSA is a concept layer over programming.
 
-### Java Example
+### Example (Java)
 ```java
-int[] marks = {85, 90, 78}; // data structure (array)
+int[] nums = {4, 9, 2, 7};
 
-// algorithm: find max
-int max = marks[0];
-for (int i = 1; i < marks.length; i++) {
-    if (marks[i] > max) max = marks[i];
+// Algorithm: find maximum
+int max = nums[0];
+for (int i = 1; i < nums.length; i++) {
+    if (nums[i] > max) max = nums[i];
 }
-System.out.println(max);
+System.out.println(max); // 9
 ```
 
-### Code Explanation
-- Array stores values.
-- Loop compares all values to find largest.
+### Explanation
+- Array stores data.
+- Loop compares and updates max.
+
+### Complexity
+- Time: O(n)
+- Space: O(1)
 
 ### Practice Task
-Write Java code to find minimum value in an array.
+Find minimum and maximum in one pass.
 
 ---
 
-## 2) Time and Space Complexity
+## 2) Time Complexity and Space Complexity (Detailed)
+
+## 2.1 Time Complexity
 
 ### Definition
-Complexity measures how efficient code is in terms of time and memory.
+Time complexity tells how the runtime grows with input size `n`.
 
 ### Use
-To compare different solutions and choose optimal one.
+- Compare algorithms.
+- Choose faster approach for large data.
 
 ### When & Why Used
-Used while designing algorithms and during interviews.
+- During optimization and interviews.
+- To predict performance before deploying code.
 
-### Syntax and Logic
-Big-O notation:
-- O(1), O(log n), O(n), O(n log n), O(n^2)
+### Common Orders
+- **O(1)**: Constant time (independent of n)
+- **O(log n)**: Logarithmic (input halves repeatedly)
+- **O(n)**: Linear
+- **O(n log n)**: Efficient sorting class
+- **O(n²)**: Nested loops over n
+- **O(2^n), O(n!)**: Exponential/factorial (very expensive)
 
-### Java Example
+### Best Case vs Worst Case
+- **Best case**: Most favorable input.
+- **Worst case**: Most difficult input.
+- Worst-case is usually used in interviews because it guarantees upper bound.
+
+### Example
 ```java
 public static int linearSearch(int[] arr, int target) {
     for (int i = 0; i < arr.length; i++) {
@@ -103,101 +125,163 @@ public static int linearSearch(int[] arr, int target) {
     return -1;
 }
 ```
+- Best case: O(1) (target at first index)
+- Worst case: O(n) (target last or absent)
 
-### Code Explanation
-- Checks each element once.
-- Worst case: all elements checked → O(n)
-- Extra space: O(1)
+---
+
+## 2.2 Space Complexity
+
+### Definition
+Space complexity is the extra memory used by an algorithm as input grows.
+
+### Use
+- Important in memory-constrained systems.
+- Helps avoid memory overflow and improve efficiency.
+
+### When & Why Used
+- Used when handling large inputs.
+- Required in interviews to compare optimized solutions.
+
+### Includes
+- Auxiliary memory (extra arrays, stacks, maps)
+- Recursion call stack
+
+### Example
+```java
+public static int[] copyArray(int[] arr) {
+    int[] copy = new int[arr.length];
+    for (int i = 0; i < arr.length; i++) {
+        copy[i] = arr[i];
+    }
+    return copy;
+}
+```
+- Time: O(n)
+- Extra space: O(n) (new array)
 
 ### Practice Task
-Analyze complexity of binary search.
+Compare recursive Fibonacci vs iterative Fibonacci for time and space.
 
 ---
 
 ## 3) Arrays
 
 ### Definition
-An array stores same-type elements in contiguous memory.
+Array stores same-type elements in contiguous memory.
 
 ### Use
-Fast indexing and iteration.
+- Fast index access
+- Useful for fixed-size or near-fixed-size data
 
 ### When & Why Used
-Used when size is known or near-known and random access is needed.
+- Use when random access is needed.
+- Very common base for other structures.
 
 ### Syntax and Logic
 ```java
-int[] arr = new int[5];
-int[] nums = {1, 2, 3};
+int[] arr = {10, 20, 30};
+int x = arr[1]; // 20
 ```
 
-### Java Example
+### Complexity (Array Operations)
+- Access by index: Best O(1), Worst O(1)
+- Search unsorted: Best O(1), Worst O(n)
+- Insert at end (space available): Best O(1), Worst O(1)
+- Insert at middle: Best O(1) (at end-like position), Worst O(n) due to shifts
+- Delete at middle: Worst O(n)
+
+### Example
 ```java
-public static int sum(int[] arr) {
-    int total = 0;
-    for (int x : arr) total += x;
-    return total;
+public static int secondLargest(int[] arr) {
+    int first = Integer.MIN_VALUE, second = Integer.MIN_VALUE;
+    for (int num : arr) {
+        if (num > first) {
+            second = first;
+            first = num;
+        } else if (num > second && num != first) {
+            second = num;
+        }
+    }
+    return second;
 }
 ```
 
-### Code Explanation
-- `total` starts at 0.
-- Each element added once.
-- Returns total sum.
+### Explanation
+- Track top two values in one pass.
+- Efficient and no sorting required.
+
+### Complexity
+- Time: O(n)
+- Space: O(1)
 
 ### Practice Task
-Find second largest element without sorting.
+Rotate array by `k` steps to right.
 
 ---
 
 ## 4) Strings
 
 ### Definition
-A String is a sequence of characters.
+String is a sequence of characters.
 
 ### Use
-Text processing: validation, parsing, searching.
+- Text processing, validation, formatting, parsing.
 
 ### When & Why Used
-Used whenever text data is involved.
+- Any input/output text operation.
 
 ### Syntax and Logic
 ```java
 String s = "hello";
-StringBuilder sb = new StringBuilder("hello");
+StringBuilder sb = new StringBuilder(s);
+sb.append(" world");
 ```
+- `String` is immutable.
+- `StringBuilder` is mutable and efficient for repeated changes.
 
-### Java Example
+### Complexity
+- Access char by index: O(1)
+- Concatenation with `+` in loop: can be costly
+- Using StringBuilder append: amortized efficient
+
+### Example
 ```java
 public static boolean isPalindrome(String s) {
     int l = 0, r = s.length() - 1;
     while (l < r) {
         if (s.charAt(l) != s.charAt(r)) return false;
-        l++; r--;
+        l++;
+        r--;
     }
     return true;
 }
 ```
 
-### Code Explanation
-- Compare first and last, then move inward.
-- If any mismatch, not palindrome.
+### Explanation
+- Two pointers compare both ends.
+
+### Complexity
+- Best: O(1) (early mismatch)
+- Worst: O(n)
+- Space: O(1)
 
 ### Practice Task
-Count vowels and consonants in a string.
+Reverse words in a sentence.
 
 ---
 
 ## 5) Linked Lists
 
 ### Definition
-A linked list is a chain of nodes where each node points to next.
+A list of nodes where each node has data and pointer to next node.
 
 ### Use
-Efficient insert/delete when position pointer is known.
+- Dynamic size
+- Fast insertion/deletion when node reference is known
 
 ### When & Why Used
-Used when dynamic size and frequent modifications are needed.
+- When frequent insertions/deletions are needed.
 
 ### Syntax and Logic
 ```java
@@ -208,108 +292,151 @@ class Node {
 }
 ```
 
-### Java Example
+### Complexity
+- Access by index: Best O(1) (head), Worst O(n)
+- Insert at head: O(1)
+- Insert at tail: O(n) (O(1) if tail pointer kept)
+- Delete by value: O(n)
+
+### Example
 ```java
-public static Node insertAtHead(Node head, int val) {
-    Node newNode = new Node(val);
-    newNode.next = head;
-    return newNode;
+public static Node reverseList(Node head) {
+    Node prev = null, curr = head;
+    while (curr != null) {
+        Node next = curr.next;
+        curr.next = prev;
+        prev = curr;
+        curr = next;
+    }
+    return prev;
 }
 ```
 
-### Code Explanation
-- New node created.
-- Points to current head.
-- New node becomes new head.
+### Explanation
+- Reverse links one by one.
+
+### Complexity
+- Time: O(n)
+- Space: O(1)
 
 ### Practice Task
-Reverse a singly linked list iteratively.
+Detect cycle using slow/fast pointer.
 
 ---
 
-## 6) Stacks
+## 6) Stack
 
 ### Definition
-Stack is LIFO structure.
+LIFO (Last In, First Out).
 
 ### Use
-Undo operations, recursion simulation, expression parsing.
+- Undo operations
+- Function call simulation
+- Expression evaluation
 
 ### When & Why Used
-Used when most recent element should be processed first.
+- When recent element should be processed first.
 
 ### Syntax and Logic
 ```java
 Stack<Integer> st = new Stack<>();
 st.push(10);
 st.pop();
+st.peek();
 ```
 
-### Java Example
+### Complexity
+- Push: O(1)
+- Pop: O(1)
+- Peek: O(1)
+
+### Example
 ```java
-public static String reverseWord(String s) {
+public static boolean balancedParentheses(String s) {
     Stack<Character> st = new Stack<>();
-    for (char c : s.toCharArray()) st.push(c);
-    StringBuilder sb = new StringBuilder();
-    while (!st.isEmpty()) sb.append(st.pop());
-    return sb.toString();
+    for (char c : s.toCharArray()) {
+        if (c == '(') st.push(c);
+        else if (c == ')') {
+            if (st.isEmpty()) return false;
+            st.pop();
+        }
+    }
+    return st.isEmpty();
 }
 ```
 
-### Code Explanation
-- Push all chars.
-- Pop gives reverse order.
+### Explanation
+- Opening bracket pushes.
+- Closing bracket pops matching opening.
+
+### Complexity
+- Time: O(n)
+- Space: O(n) worst (all openings)
 
 ### Practice Task
-Implement Min Stack (push, pop, getMin).
+Implement stack using array.
 
 ---
 
-## 7) Queues
+## 7) Queue
 
 ### Definition
-Queue is FIFO structure.
+FIFO (First In, First Out).
 
 ### Use
-Task scheduling, buffering, BFS.
+- Scheduling
+- Buffering
+- BFS in graphs
 
 ### When & Why Used
-Used when first inserted item must be processed first.
+- When oldest element must be processed first.
 
 ### Syntax and Logic
 ```java
 Queue<Integer> q = new LinkedList<>();
 q.offer(1);
 q.poll();
+q.peek();
 ```
 
-### Java Example
+### Complexity
+- Enqueue: O(1)
+- Dequeue: O(1)
+- Peek: O(1)
+
+### Example
 ```java
-public static void printQueue(Queue<Integer> q) {
+public static void printOrder(Queue<String> q) {
     while (!q.isEmpty()) {
-        System.out.print(q.poll() + " ");
+        System.out.println(q.poll());
     }
 }
 ```
 
-### Code Explanation
-- Removes and prints elements in insertion order.
+### Explanation
+- Items are removed in arrival order.
+
+### Complexity
+- Time: O(n) total for n items
+- Space: O(1) extra
 
 ### Practice Task
-Implement circular queue using array.
+Implement queue using two stacks.
 
 ---
 
-## 8) Hashing (HashMap/HashSet)
+## 8) Hashing (HashMap / HashSet)
 
 ### Definition
-Hashing maps keys to indices for fast operations.
+Maps keys to buckets using hash function.
 
 ### Use
-Fast lookup, frequency count, duplicates detection.
+- Fast lookups
+- Frequency counting
+- Duplicate checks
 
 ### When & Why Used
-Used when quick average O(1) search/insert is needed.
+- When average O(1) operations are needed.
 
 ### Syntax and Logic
 ```java
@@ -317,107 +444,139 @@ HashMap<String, Integer> map = new HashMap<>();
 HashSet<Integer> set = new HashSet<>();
 ```
 
-### Java Example
+### Complexity (average case)
+- Insert: O(1)
+- Search: O(1)
+- Delete: O(1)
+Worst case can degrade (hash collisions) near O(n).
+
+### Example
 ```java
-public static boolean hasDuplicate(int[] arr) {
-    HashSet<Integer> set = new HashSet<>();
-    for (int x : arr) {
-        if (set.contains(x)) return true;
-        set.add(x);
+public static char firstUniqueChar(String s) {
+    Map<Character, Integer> freq = new HashMap<>();
+    for (char c : s.toCharArray()) {
+        freq.put(c, freq.getOrDefault(c, 0) + 1);
     }
-    return false;
+    for (char c : s.toCharArray()) {
+        if (freq.get(c) == 1) return c;
+    }
+    return '#';
 }
 ```
 
-### Code Explanation
-- Store each value in set.
-- If already exists, duplicate found.
+### Explanation
+- First pass: count frequency.
+- Second pass: return first char with freq 1.
+
+### Complexity
+- Time: O(n)
+- Space: O(k) where k = unique chars
 
 ### Practice Task
-Find first unique character in string.
+Group anagrams using HashMap.
 
 ---
 
 ## 9) Trees
 
 ### Definition
-A hierarchical structure with nodes and edges.
+Hierarchical structure of nodes.
 
 ### Use
-Represent hierarchical data (filesystem, organization).
+- Hierarchy representation
+- Efficient searching/traversals
 
 ### When & Why Used
-Used for fast search/traversal and hierarchy modeling.
+- File systems, menus, org structures.
 
 ### Syntax and Logic
 ```java
 class TreeNode {
     int val;
     TreeNode left, right;
-    TreeNode(int v) { val = v; }
+    TreeNode(int val) { this.val = val; }
 }
 ```
 
-### Java Example
+### Complexity
+Depends on operation and tree shape.
+
+### Example (Inorder)
 ```java
-public static int countNodes(TreeNode root) {
-    if (root == null) return 0;
-    return 1 + countNodes(root.left) + countNodes(root.right);
+public static void inorder(TreeNode root) {
+    if (root == null) return;
+    inorder(root.left);
+    System.out.print(root.val + " ");
+    inorder(root.right);
 }
 ```
 
-### Code Explanation
-- Base case null gives 0.
-- Count current + left + right.
+### Explanation
+- Left, root, right traversal sequence.
+
+### Complexity
+- Time: O(n)
+- Space: O(h) recursion stack (h = tree height)
 
 ### Practice Task
-Find height of binary tree.
+Find number of leaf nodes.
 
 ---
 
 ## 10) Binary Search Tree (BST)
 
 ### Definition
-A tree where left < root < right.
+Binary tree with rule: left < root < right.
 
 ### Use
-Ordered data storage with efficient operations.
+- Ordered storage
+- Faster search/insert/delete (if balanced)
 
 ### When & Why Used
-Used for searchable ordered collections.
+- When sorted behavior needed with dynamic updates.
 
 ### Syntax and Logic
-Use recursive or iterative insert/search/delete.
+Use comparisons to move left/right.
 
-### Java Example
+### Complexity
+- Best/Average (balanced): O(log n)
+- Worst (skewed): O(n)
+Reason: height becomes n in skewed tree.
+
+### Example
 ```java
-public static TreeNode insertBST(TreeNode root, int key) {
-    if (root == null) return new TreeNode(key);
-    if (key < root.val) root.left = insertBST(root.left, key);
-    else if (key > root.val) root.right = insertBST(root.right, key);
-    return root;
+public static boolean searchBST(TreeNode root, int key) {
+    while (root != null) {
+        if (root.val == key) return true;
+        if (key < root.val) root = root.left;
+        else root = root.right;
+    }
+    return false;
 }
 ```
 
-### Code Explanation
-- Find correct position based on BST rule.
-- Insert where null is found.
+### Explanation
+- Each comparison eliminates one subtree.
 
 ### Practice Task
-Implement search and inorder traversal of BST.
+Insert and delete node in BST.
 
 ---
 
-## 11) Heap and Priority Queue
+## 11) Heap / Priority Queue
 
 ### Definition
-Heap is complete tree with min/max property.
+Complete binary tree with heap property.
+- Min-heap: parent <= children
+- Max-heap: parent >= children
 
 ### Use
-Efficient min/max extraction.
+- Top-k
+- Scheduling
+- Priority processing
 
 ### When & Why Used
-Used for top-k, scheduling, shortest path algorithms.
+- Need repeated min or max quickly.
 
 ### Syntax and Logic
 ```java
@@ -425,159 +584,210 @@ PriorityQueue<Integer> minHeap = new PriorityQueue<>();
 PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
 ```
 
-### Java Example
+### Complexity
+- Insert: O(log n)
+- Remove top: O(log n)
+- Peek top: O(1)
+
+### Example
 ```java
-public static int kthSmallest(int[] arr, int k) {
-    PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
-    for (int x : arr) {
-        maxHeap.offer(x);
-        if (maxHeap.size() > k) maxHeap.poll();
+public static int kthLargest(int[] nums, int k) {
+    PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+    for (int x : nums) {
+        minHeap.offer(x);
+        if (minHeap.size() > k) minHeap.poll();
     }
-    return maxHeap.peek();
+    return minHeap.peek();
 }
 ```
 
-### Code Explanation
-- Keep only k smallest elements in maxHeap.
-- Top is kth smallest.
+### Explanation
+- Maintain only k largest elements.
+- Smallest among them = kth largest overall.
 
 ### Practice Task
-Find kth largest element using min heap.
+Find k closest points to origin.
 
 ---
 
 ## 12) Trie
 
 ### Definition
-Trie is tree-like structure for strings by characters.
+Tree for storing strings character-by-character.
 
 ### Use
-Prefix search and autocomplete.
+- Prefix search
+- Autocomplete
+- Dictionary checks
 
 ### When & Why Used
-Used when prefix operations are frequent.
+- Many prefix queries on words.
 
 ### Syntax and Logic
-Character-by-character traversal.
-
-### Java Example
 ```java
 class TrieNode {
     TrieNode[] child = new TrieNode[26];
     boolean isEnd;
 }
+```
 
+### Complexity
+If word length = L:
+- Insert: O(L)
+- Search: O(L)
+- Prefix: O(L)
+Space can be high due to many pointers.
+
+### Example
+```java
 class Trie {
     TrieNode root = new TrieNode();
 
     void insert(String word) {
         TrieNode cur = root;
         for (char c : word.toCharArray()) {
-            int i = c - 'a';
-            if (cur.child[i] == null) cur.child[i] = new TrieNode();
-            cur = cur.child[i];
+            int idx = c - 'a';
+            if (cur.child[idx] == null) cur.child[idx] = new TrieNode();
+            cur = cur.child[idx];
         }
         cur.isEnd = true;
+    }
+
+    boolean search(String word) {
+        TrieNode cur = root;
+        for (char c : word.toCharArray()) {
+            int idx = c - 'a';
+            if (cur.child[idx] == null) return false;
+            cur = cur.child[idx];
+        }
+        return cur.isEnd;
     }
 }
 ```
 
-### Code Explanation
-- Follow/create path for each character.
-- Mark last node as word end.
-
 ### Practice Task
-Implement `search` and `startsWith`.
+Implement `startsWith(prefix)`.
 
 ---
 
 ## 13) Graphs
 
 ### Definition
-Graph is a set of vertices and edges.
+Set of vertices (nodes) and edges (connections).
 
 ### Use
-Networks, maps, dependencies, recommendations.
+- Social networks
+- Maps/routes
+- Dependencies
 
 ### When & Why Used
-Used for relation-based problems.
+- Any relationship/network problem.
 
-### Syntax and Logic
-Adjacency list representation preferred for sparse graphs.
-
-### Java Example (DFS)
+### Syntax and Logic (Adjacency List)
 ```java
-public static void dfs(int u, List<List<Integer>> g, boolean[] vis) {
-    vis[u] = true;
-    System.out.print(u + " ");
-    for (int v : g.get(u)) {
-        if (!vis[v]) dfs(v, g, vis);
+List<List<Integer>> graph = new ArrayList<>();
+```
+
+### Complexity
+- BFS/DFS: O(V + E)
+- Space: O(V + E)
+
+### Example (BFS)
+```java
+public static void bfs(List<List<Integer>> g, int src) {
+    boolean[] vis = new boolean[g.size()];
+    Queue<Integer> q = new LinkedList<>();
+    vis[src] = true;
+    q.offer(src);
+
+    while (!q.isEmpty()) {
+        int u = q.poll();
+        System.out.print(u + " ");
+        for (int v : g.get(u)) {
+            if (!vis[v]) {
+                vis[v] = true;
+                q.offer(v);
+            }
+        }
     }
 }
 ```
 
-### Code Explanation
-- Visit current node.
-- Recursively visit unvisited neighbors.
+### Explanation
+- Visit source.
+- Expand level by level.
 
 ### Practice Task
-Implement BFS and detect connected components.
+Count connected components in undirected graph.
 
 ---
 
 ## 14) Sorting Algorithms
 
 ### Definition
-Sorting arranges data in order.
+Arrange elements in ascending/descending order.
 
 ### Use
-Faster searching and better organization.
+- Faster searching
+- Ordered reports
+- Data preprocessing
 
 ### When & Why Used
-Used before binary search, reports, ranking.
+- Before binary search
+- When rank/order is required.
 
-### Syntax and Logic
-Common beginner sorts: Bubble, Selection, Insertion.
+### Common Complexities
+- Bubble/Selection/Insertion: O(n²)
+- Merge sort: O(n log n)
+- Quick sort: Avg O(n log n), Worst O(n²)
+- Heap sort: O(n log n)
 
-### Java Example (Insertion Sort)
+### Example (Merge Sort)
 ```java
-public static void insertionSort(int[] arr) {
-    for (int i = 1; i < arr.length; i++) {
-        int key = arr[i], j = i - 1;
-        while (j >= 0 && arr[j] > key) {
-            arr[j + 1] = arr[j];
-            j--;
-        }
-        arr[j + 1] = key;
-    }
+public static void mergeSort(int[] arr, int l, int r) {
+    if (l >= r) return;
+    int m = l + (r - l) / 2;
+    mergeSort(arr, l, m);
+    mergeSort(arr, m + 1, r);
+    merge(arr, l, m, r);
 }
 ```
+(Assume `merge()` combines two sorted halves.)
 
-### Code Explanation
-- Keep left part sorted.
-- Insert current element in correct position.
+### Explanation
+- Divide array into halves.
+- Recursively sort both halves.
+- Merge sorted halves.
+
+### Complexity
+- Best/Worst Time: O(n log n)
+- Space: O(n)
 
 ### Practice Task
-Implement merge sort.
+Implement quick sort with pivot explanation.
 
 ---
 
 ## 15) Searching Algorithms
 
 ### Definition
-Searching finds target element in data.
+Finding target in data structure.
 
 ### Use
-Retrieving required records quickly.
+- Lookups, validation, retrieval.
 
 ### When & Why Used
-In databases, filtering, validation.
+- In almost every application.
 
-### Syntax and Logic
-- Linear search for unsorted data
-- Binary search for sorted data
+### Types
+- Linear Search
+- Binary Search (sorted array)
 
-### Java Example (Binary Search)
+### Complexity
+- Linear: Best O(1), Worst O(n)
+- Binary: Best O(1), Worst O(log n)
+
+### Example (Binary Search)
 ```java
 public static int binarySearch(int[] arr, int target) {
     int l = 0, r = arr.length - 1;
@@ -592,100 +802,121 @@ public static int binarySearch(int[] arr, int target) {
 ```
 
 ### Practice Task
-Find first and last index of target in sorted array.
+Find first occurrence of target in sorted array.
 
 ---
 
 ## 16) Recursion
 
 ### Definition
-A function solving problem by calling itself.
+Function calls itself for smaller subproblem.
 
 ### Use
-Tree traversal, divide-and-conquer, backtracking.
+- Tree traversal
+- Divide and conquer
+- Backtracking
 
 ### When & Why Used
-Used when problem can be broken into similar smaller subproblems.
+- Problem naturally breaks into similar smaller parts.
 
-### Java Example
+### Complexity
+Depends on recursion tree.
+Also includes call stack space.
+
+### Example
 ```java
-public static int sumN(int n) {
-    if (n == 0) return 0;
-    return n + sumN(n - 1);
+public static int factorial(int n) {
+    if (n <= 1) return 1;
+    return n * factorial(n - 1);
 }
 ```
 
-### Code Explanation
-- Base case at n=0.
-- Sum current n with result of n-1.
+### Explanation
+- Base case stops recursion.
+- Recursive case reduces n.
+
+### Complexity
+- Time: O(n)
+- Space: O(n) call stack
 
 ### Practice Task
-Print numbers from 1 to n recursively.
+Compute sum of digits using recursion.
 
 ---
 
-## 17) Dynamic Programming (Beginner)
+## 17) Dynamic Programming (DP)
 
 ### Definition
-An optimization of recursion by storing repeated sub-results.
+Optimization over recursion by storing subproblem results.
 
 ### Use
-Complex optimization/counting problems.
+- Min/max/count problems with overlapping subproblems.
 
 ### When & Why Used
-When recursion has overlapping subproblems.
+- Recursive solution repeats same subproblems.
 
-### Java Example (Climbing Stairs)
+### Approaches
+- Memoization (top-down)
+- Tabulation (bottom-up)
+
+### Example (Fibonacci Tabulation)
 ```java
-public static int climbStairs(int n) {
-    if (n <= 2) return n;
+public static int fibDP(int n) {
+    if (n <= 1) return n;
     int[] dp = new int[n + 1];
-    dp[1] = 1; dp[2] = 2;
-    for (int i = 3; i <= n; i++) {
+    dp[0] = 0; dp[1] = 1;
+    for (int i = 2; i <= n; i++) {
         dp[i] = dp[i - 1] + dp[i - 2];
     }
     return dp[n];
 }
 ```
 
+### Complexity
+- Time: O(n)
+- Space: O(n) (can optimize to O(1))
+
 ### Practice Task
-Solve house robber basic problem.
+Solve climbing stairs and house robber.
 
 ---
 
 ## 18) Greedy Algorithms
 
 ### Definition
-Greedy picks best immediate option at each step.
+Choose locally best option at each step.
 
 ### Use
-Scheduling and optimization with local decisions.
+- Scheduling and optimization problems.
 
 ### When & Why Used
-When local best choice leads to global best answer.
+- When local optimum leads to global optimum.
 
-### Java Example (Activity Count idea)
-```java
-// After sorting by end time, count non-overlapping intervals.
-```
+### Complexity
+Problem dependent.
+
+### Example (Activity Selection Idea)
+1. Sort by finish time  
+2. Pick first activity  
+3. Pick next non-overlapping activity  
 
 ### Practice Task
-Given intervals, remove minimum overlaps.
+Given intervals, find maximum non-overlapping intervals.
 
 ---
 
 ## 19) Backtracking
 
 ### Definition
-Try all possibilities, undo choice when needed.
+Try choices, recurse, undo choice if invalid.
 
 ### Use
-Combinations, permutations, puzzle solving.
+- N-Queens, Sudoku, permutations, subsets.
 
 ### When & Why Used
-When exhaustive search with pruning is needed.
+- Need all valid combinations/permutations.
 
-### Java Example (Subsets)
+### Example (Subsets)
 ```java
 public static void subsets(int[] nums, int idx, List<Integer> cur, List<List<Integer>> ans) {
     if (idx == nums.length) {
@@ -699,23 +930,29 @@ public static void subsets(int[] nums, int idx, List<Integer> cur, List<List<Int
 }
 ```
 
+### Complexity
+- Time: often exponential (e.g., O(2^n))
+- Space: recursion depth O(n)
+
 ### Practice Task
-Generate all permutations of array.
+Generate all permutations of a string.
 
 ---
 
 ## 20) Sliding Window and Two Pointers
 
 ### Definition
-Techniques to optimize array/string traversal.
+Techniques for efficient array/string traversal.
 
 ### Use
-Subarray and substring problems.
+- Subarray/substring optimization
+- Pair problems in sorted arrays
 
 ### When & Why Used
-Used when contiguous range or pair relation is required.
+- Repeated range calculations
+- Need O(n) optimization over O(n²)
 
-### Java Example (Max sum of size k)
+### Example (Fixed-size window max sum)
 ```java
 public static int maxSumK(int[] arr, int k) {
     int sum = 0;
@@ -729,108 +966,153 @@ public static int maxSumK(int[] arr, int k) {
 }
 ```
 
+### Complexity
+- Time: O(n)
+- Space: O(1)
+
 ### Practice Task
-Find longest substring without repeating characters.
+Longest substring without repeating characters.
 
 ---
 
 ## 21) Detailed Differences Between Data Structures
 
-### Array vs Linked List
-- Array: contiguous memory, O(1) indexing, costly middle insert/delete.
-- Linked List: non-contiguous, O(n) access, easy insert/delete with node reference.
+## Array vs Linked List
+- Array:
+  - Contiguous memory
+  - O(1) index access
+  - Insert/delete in middle costly O(n)
+- Linked List:
+  - Non-contiguous nodes
+  - O(n) access
+  - Insert/delete easier with node reference
 
-### Stack vs Queue
-- Stack: LIFO
-- Queue: FIFO
+## Stack vs Queue
+- Stack: LIFO  
+- Queue: FIFO  
+- Use stack for undo/backtracking; queue for scheduling/BFS.
 
-### HashMap vs TreeMap
-- HashMap: average O(1), unordered.
-- TreeMap: O(log n), sorted keys.
+## HashMap vs TreeMap
+- HashMap:
+  - Average O(1)
+  - Unordered keys
+- TreeMap:
+  - O(log n)
+  - Keys sorted
 
-### BST vs Heap
-- BST: supports ordered search/range.
-- Heap: optimized for min/max retrieval only.
+## BST vs Heap
+- BST:
+  - Ordered search
+  - Good for range queries
+- Heap:
+  - Best for min/max extraction
+  - Not for full ordered search
 
-### Trie vs HashMap
-- Trie: prefix-based operations.
-- HashMap: exact key lookup.
+## Trie vs HashMap (for words)
+- Trie: O(L) prefix/word operations, prefix-friendly
+- HashMap: exact key lookup; no native prefix structure
 
-### Tree vs Graph
-- Tree: connected acyclic graph with one root.
-- Graph: generic relation model, can have cycles/disconnected parts.
+## Tree vs Graph
+- Tree: connected + acyclic + single root (usually)
+- Graph: may have cycles, may be disconnected, general relations
 
-### Segment Tree vs Fenwick Tree (intro)
-- Fenwick: simpler for prefix sums.
-- Segment Tree: more flexible range queries and updates.
-
-**Practice Task:**
-Create a complexity comparison table for all above.
-
----
-
-## 22) Interview Questions with Answers
-
-### 1. What is the difference between array and linked list?
-Array has O(1) index access but costly middle insertions. Linked list has O(n) access but easy insertion/deletion at node.
-
-### 2. Why binary search needs sorted array?
-Because it relies on order to eliminate half search space.
-
-### 3. Explain HashMap collision.
-Different keys may map to same bucket; handled using chaining/tree bins.
-
-### 4. BFS vs DFS?
-BFS explores level-wise using queue; DFS explores depth-first using stack/recursion.
-
-### 5. What is recursion base case?
-Condition that stops further recursive calls.
-
-### 6. Why use dynamic programming?
-To avoid recalculating overlapping subproblems.
-
-### 7. Quick sort worst-case complexity?
-O(n^2) when partitions are highly unbalanced.
-
-### 8. What is heap used for?
-Priority handling, top-k elements, scheduling.
-
-### 9. What is balanced BST benefit?
-Keeps height around log n, making operations fast.
-
-### 10. What is topological sort?
-Linear ordering of DAG where prerequisite comes first.
-
-### 11. Difference between process and thread?
-Process has separate memory space; threads share memory within process.
-
-### 12. What is two-pointer technique?
-Use two indices to solve pair/subarray problems efficiently.
-
-### 13. What is sliding window?
-Maintain moving range to optimize contiguous segment problems.
-
-### 14. How to detect cycle in linked list?
-Use slow-fast pointers (Floyd’s algorithm).
-
-### 15. How to prepare for product-company interviews?
-Master core DSA patterns, practice timed problems, explain logic clearly, and analyze complexity.
+## Practice Task
+Create your own table for Search/Insert/Delete/Space/Best use-case for all structures.
 
 ---
 
-## Suggested Beginner Practice Plan (6 Weeks)
-- Week 1: Complexity, Arrays, Strings
-- Week 2: Linked List, Stack, Queue
-- Week 3: Hashing, Trees, BST
-- Week 4: Heap, Graph basics, Sorting, Searching
-- Week 5: Recursion, Backtracking, DP intro
-- Week 6: Mixed interview sets + revision
+## 22) Interview Questions with Answers (Google / Amazon / Product Companies)
 
-Daily:
-- 1 concept revision
-- 3 coding questions (2 easy + 1 medium)
-- Complexity write-up for each solution
+1. **What is the difference between Array and Linked List?**  
+   Array gives O(1) indexing but costly mid insertion/deletion. Linked list gives O(n) indexing but easier insert/delete with node references.
+
+2. **Why is binary search O(log n)?**  
+   Each step halves search space.
+
+3. **Can binary search work on unsorted data?**  
+   No, sorted order is required.
+
+4. **Explain HashMap collision.**  
+   Multiple keys map to same bucket index; handled using chaining/tree bins.
+
+5. **BFS vs DFS use cases?**  
+   BFS for shortest path in unweighted graph; DFS for deep traversal and cycle detection patterns.
+
+6. **Why use DP instead of recursion?**  
+   DP avoids repeated calculations of overlapping subproblems.
+
+7. **What is memoization?**  
+   Caching recursive results (top-down DP).
+
+8. **Quick sort worst case and why?**  
+   O(n²), when pivot divides poorly (highly unbalanced partitions).
+
+9. **What is stable sorting?**  
+   Equal elements preserve relative order (e.g., Merge sort stable, quick sort generally unstable).
+
+10. **What is a balanced tree?**  
+    Tree height near log n; gives faster operations.
+
+11. **How to detect cycle in linked list?**  
+    Floyd’s slow/fast pointer algorithm.
+
+12. **What is topological sort?**  
+    Ordering of DAG where edge u→v means u appears before v.
+
+13. **Difference between process and thread?**  
+    Process has separate memory; threads share process memory.
+
+14. **When to use heap?**  
+    Top-k, priority scheduling, streaming min/max.
+
+15. **What is amortized analysis?**  
+    Average cost over sequence of operations (e.g., dynamic array resize behavior).
+
+16. **Why StringBuilder over String concatenation in loop?**  
+    String is immutable; repeated concatenation creates many objects.
+
+17. **What is space-time tradeoff?**  
+    Use more memory to reduce runtime (e.g., hash map caching).
+
+18. **How do you optimize brute force solutions in interviews?**  
+    Identify repeated work, use hashing/two pointers/sliding window/DP.
+
+19. **What if interviewer asks for best and worst case?**  
+    Explain both with input scenarios and why runtime changes.
+
+20. **Interview solving strategy in product companies?**  
+    Clarify problem, state brute force, optimize, analyze complexity, test edge cases, communicate clearly.
 
 ---
 
-Keep this handbook for revision and build strong fundamentals before moving to advanced topics.
+## 23) Beginner Practice Roadmap (6 Weeks)
+
+### Week 1
+Complexity + Arrays + Strings
+
+### Week 2
+Linked List + Stack + Queue
+
+### Week 3
+Hashing + Trees + BST
+
+### Week 4
+Heap + Graph basics + Searching + Sorting
+
+### Week 5
+Recursion + Backtracking + DP basics
+
+### Week 6
+Mixed interview questions + timed mock practice
+
+### Daily Template
+- 30 mins concept revision
+- 60 mins coding (2 easy + 1 medium)
+- 15 mins complexity analysis writing
+- 15 mins mistake review
+
+---
+
+## Final Note
+Consistency beats intensity.  
+If you practice daily and revise patterns weekly, DSA will become natural and interview confidence will grow quickly.
