@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beginner DSA Handbook (Java)</title>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; margin: 40px; color: #111; }
+    h1, h2, h3 { color: #0b3d91; }
+    code, pre { font-family: Consolas, monospace; }
+    pre { background: #f5f5f5; padding: 12px; border-radius: 8px; overflow-x: auto; }
+    .section { page-break-inside: avoid; margin-bottom: 24px; }
+    @media print {
+      body { margin: 18mm; }
+      h1, h2 { page-break-after: avoid; }
+      pre { white-space: pre-wrap; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Beginner Data Structures & Algorithms Handbook (Java)</h1>
+  <p>A beginner-friendly guide to core Data Structures and Algorithms with Java syntax, logic, code examples, concept differences, hands-on tasks, and interview Q&A.</p>
+
+  <h2>How to export as PDF</h2>
+  <ol>
+    <li>Open this file in browser.</li>
+    <li>Press <b>Ctrl+P</b> (or Cmd+P on Mac).</li>
+    <li>Select <b>Save as PDF</b>.</li>
+  </ol>
+
+  <div class="section">
+    <h2>Contents</h2>
+    <p>Introduction, Complexity, Arrays, Strings, Linked List, Stack, Queue, Hashing, Trees, BST, Heap, Trie, Graphs, Sorting, Searching, Recursion, DP, Greedy, Backtracking, Differences, Interview Q&A.</p>
+  </div>
+
+  <div class="section">
+    <h2>1) Introduction to DSA</h2>
+    <p><b>Data Structure</b> organizes data for efficient use. <b>Algorithm</b> is a step-by-step way to solve a problem.</p>
+    <p><b>Task:</b> Give one real-world example each for data structure and algorithm.</p>
+  </div>
+
+  <div class="section">
+    <h2>2) Time and Space Complexity</h2>
+    <p>Common time complexities: O(1), O(log n), O(n), O(n log n), O(n²).</p>
+<pre>public static int findMax(int[] arr) {
+    int max = arr[0];
+    for (int i = 1; i &lt; arr.length; i++) {
+        if (arr[i] &gt; max) max = arr[i];
+    }
+    return max;
+}</pre>
+    <p><b>How it works:</b> scans all elements once → O(n), extra space O(1).</p>
+    <p><b>Task:</b> Write complexity for linear search and binary search.</p>
+  </div>
+
+  <div class="section">
+    <h2>3) Arrays</h2>
+    <p>Continuous memory storage with O(1) index access.</p>
+<pre>public static int sumArray(int[] arr) {
+    int sum = 0;
+    for (int num : arr) sum += num;
+    return sum;
+}</pre>
+    <p><b>Task:</b> Find second largest element in an array.</p>
+  </div>
+
+  <div class="section">
+    <h2>4) Strings</h2>
+    <p>Strings are immutable in Java. Use StringBuilder for modifications.</p>
+<pre>public static String reverse(String s) {
+    char[] ch = s.toCharArray();
+    int l = 0, r = ch.length - 1;
+    while (l &lt; r) {
+        char t = ch[l];
+        ch[l] = ch[r];
+        ch[r] = t;
+        l++; r--;
+    }
+    return new String(ch);
+}</pre>
+    <p><b>Task:</b> Check palindrome string.</p>
+  </div>
+
+  <div class="section">
+    <h2>5) Linked List</h2>
+<pre>class Node {
+    int data;
+    Node next;
+    Node(int data) { this.data = data; }
+}</pre>
+    <p>Dynamic structure; insertion/deletion easier than arrays at known position.</p>
+    <p><b>Task:</b> Insert node at start and end.</p>
+  </div>
+
+  <div class="section">
+    <h2>6) Stack (LIFO)</h2>
+<pre>Stack&lt;Integer&gt; st = new Stack&lt;&gt;();
+st.push(10);
+st.push(20);
+int top = st.pop();</pre>
+    <p><b>Task:</b> Implement stack using array.</p>
+  </div>
+
+  <div class="section">
+    <h2>7) Queue (FIFO)</h2>
+<pre>Queue&lt;Integer&gt; q = new LinkedList&lt;&gt;();
+q.offer(10);
+q.offer(20);
+int x = q.poll();</pre>
+    <p><b>Task:</b> Implement queue using two stacks.</p>
+  </div>
+
+  <div class="section">
+    <h2>8) Hashing (HashMap/HashSet)</h2>
+<pre>Map&lt;Character, Integer&gt; map = new HashMap&lt;&gt;();
+for (char c : s.toCharArray()) {
+    map.put(c, map.getOrDefault(c, 0) + 1);
+}</pre>
+    <p><b>Task:</b> Find first non-repeating character.</p>
+  </div>
+
+  <div class="section">
+    <h2>9) Trees and 10) BST</h2>
+<pre>public static void inorder(TreeNode root) {
+    if (root == null) return;
+    inorder(root.left);
+    System.out.print(root.val + " ");
+    inorder(root.right);
+}</pre>
+    <p><b>Task:</b> Implement BST insert and search.</p>
+  </div>
+
+  <div class="section">
+    <h2>11) Heap / PriorityQueue</h2>
+<pre>PriorityQueue&lt;Integer&gt; pq = new PriorityQueue&lt;&gt;();
+pq.offer(5);
+pq.offer(1);
+System.out.println(pq.poll()); // 1</pre>
+    <p><b>Task:</b> Find 3rd largest element using heap.</p>
+  </div>
+
+  <div class="section">
+    <h2>12) Trie</h2>
+<pre>class TrieNode {
+    TrieNode[] child = new TrieNode[26];
+    boolean isEnd;
+}</pre>
+    <p><b>Task:</b> Implement insert/search in Trie.</p>
+  </div>
+
+  <div class="section">
+    <h2>13) Graphs (BFS/DFS)</h2>
+<pre>public static void bfs(List&lt;List&lt;Integer&gt;&gt; g, int src) {
+    boolean[] vis = new boolean[g.size()];
+    Queue&lt;Integer&gt; q = new LinkedList&lt;&gt;();
+    q.offer(src);
+    vis[src] = true;
+    while (!q.isEmpty()) {
+        int u = q.poll();
+        for (int v : g.get(u)) {
+            if (!vis[v]) {
+                vis[v] = true;
+                q.offer(v);
+            }
+        }
+    }
+}</pre>
+    <p><b>Task:</b> Implement DFS for same graph.</p>
+  </div>
+
+  <div class="section">
+    <h2>14) Sorting and 15) Searching</h2>
+    <p>Learn bubble/merge/quick sort and linear/binary search basics.</p>
+    <p><b>Task:</b> Implement merge sort and binary search.</p>
+  </div>
+
+  <div class="section">
+    <h2>16) Recursion</h2>
+<pre>public static int fact(int n) {
+    if (n == 0 || n == 1) return 1;
+    return n * fact(n - 1);
+}</pre>
+    <p><b>Task:</b> Print Fibonacci using recursion.</p>
+  </div>
+
+  <div class="section">
+    <h2>17) Dynamic Programming</h2>
+<pre>public static int fibDP(int n) {
+    if (n &lt;= 1) return n;
+    int[] dp = new int[n + 1];
+    dp[0] = 0; dp[1] = 1;
+    for (int i = 2; i &lt;= n; i++) dp[i] = dp[i-1] + dp[i-2];
+    return dp[n];
+}</pre>
+    <p><b>Task:</b> Solve climbing stairs with DP.</p>
+  </div>
+
+  <div class="section">
+    <h2>18) Greedy and 19) Backtracking</h2>
+    <p>Greedy picks local best; backtracking tries choices and undoes invalid ones.</p>
+    <p><b>Task:</b> Generate subsets and permutations.</p>
+  </div>
+
+  <div class="section">
+    <h2>20) Detailed Differences (Summary)</h2>
+    <ul>
+      <li>Array vs Linked List</li>
+      <li>Stack vs Queue</li>
+      <li>HashMap vs TreeMap</li>
+      <li>BST vs Heap</li>
+      <li>Trie vs HashMap</li>
+      <li>Tree vs Graph</li>
+    </ul>
+    <p><b>Task:</b> Build your own operation-complexity table.</p>
+  </div>
+
+  <div class="section">
+    <h2>21) Interview Questions with Answers</h2>
+    <ol>
+      <li><b>Array vs Linked List?</b> Arrays O(1) indexing, linked list easier insertion/deletion at known node.</li>
+      <li><b>Why binary search O(log n)?</b> It halves search space each step.</li>
+      <li><b>HashMap use case?</b> Fast key-value lookup and frequency counting.</li>
+      <li><b>BFS vs DFS?</b> BFS level-order, DFS depth-order.</li>
+      <li><b>Why DP?</b> Avoid repeated subproblem computation.</li>
+      <li><b>Quick sort worst case?</b> Bad pivots lead to O(n²).</li>
+      <li><b>Collision in HashMap?</b> Multiple keys in same bucket.</li>
+      <li><b>What is balanced tree?</b> Height near log n for fast operations.</li>
+      <li><b>Stack overflow?</b> Too deep recursion / missing base case.</li>
+      <li><b>Topological sort?</b> Ordering for DAG dependencies.</li>
+    </ol>
+  </div>
+
+  <h2>Final Tip</h2>
+  <p>Practice daily: 1 concept + 3 coding problems + complexity analysis.</p>
+</body>
+</html>
